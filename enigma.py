@@ -1,4 +1,5 @@
 import string
+import typing
 
 ALPHABET = string.ascii_uppercase
 
@@ -61,20 +62,22 @@ class Reflector:
 
 
 class EnigmaMachine:
-    def __init__(self, plug_board, rotors, reflector) -> None:
+    def __init__(
+        self, plug_board: PlugBoard, rotors: typing.List[Rotor], reflector: Reflector
+    ) -> None:
         self.plug_board = plug_board
         self.rotors = rotors
         self.reflector = reflector
 
-    def encrypt(self, text: str):
+    def encrypt(self, text: str) -> str:
         return "".join([self.go_through(c) for c in list(text)])
 
-    def decrypt(self, text: str):
+    def decrypt(self, text: str) -> str:
         for rotor in self.rotors:
             rotor.reset()
         return "".join([self.go_through(c) for c in list(text)])
 
-    def go_through(self, char):
+    def go_through(self, char) -> str:
         char = char.upper()
         if char not in ALPHABET:
             return char
