@@ -3,10 +3,10 @@ repos:
     rev: 6.0.0
     hooks:
       - id: flake8
-        files: '.*\.py$'
-        args: ["--count", "--statistics"]
+        files: '\S*.py$'
+        args: ["--count", "--statistics", "--ignore=E731,E501"]
   - repo: https://github.com/psf/black
     rev: 23.1.0
     hooks:
       - id: black
-        files: '.*\.py$'
+        files: '\S*.py$'

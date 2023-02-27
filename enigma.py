@@ -2,8 +2,8 @@ import string
 
 ALPHABET = string.ascii_uppercase
 
-class PlugBoard:
 
+class PlugBoard:
     def __init__(self, map_alphabet: str) -> None:
         self.alphabet = ALPHABET
         self.forward_map = {}
@@ -26,7 +26,6 @@ class PlugBoard:
 
 
 class Rotor(PlugBoard):
-
     def __init__(self, map_alphabet: str, offset: int = 0) -> None:
         super().__init__(map_alphabet)
         self.offset = offset
@@ -50,7 +49,6 @@ class Rotor(PlugBoard):
 
 
 class Reflector:
-
     def __init__(self, map_alphabet: str) -> None:
         self.map = dict(zip(ALPHABET, map_alphabet))
         for x, y in self.map.items():
@@ -63,19 +61,18 @@ class Reflector:
 
 
 class EnigmaMachine:
-
     def __init__(self, plug_board, rotors, reflector) -> None:
         self.plug_board = plug_board
         self.rotors = rotors
         self.reflector = reflector
 
     def encrypt(self, text: str):
-        return ''.join([self.go_through(c) for c in list(text)])
+        return "".join([self.go_through(c) for c in list(text)])
 
     def decrypt(self, text: str):
         for rotor in self.rotors:
             rotor.reset()
-        return ''.join([self.go_through(c) for c in list(text)])
+        return "".join([self.go_through(c) for c in list(text)])
 
     def go_through(self, char):
         char = char.upper()
