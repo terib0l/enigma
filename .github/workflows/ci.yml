@@ -18,4 +18,4 @@ jobs:
       - name: setup dependency
         run: echo "pip install -r requirements.txt"
       - name: unittest
-        run: python test-main.py
+        run: python test_main.py

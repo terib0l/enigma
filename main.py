@@ -36,5 +36,4 @@ if __name__ == "__main__":
     parser.add_argument("text")
     args = parser.parse_args()
 
-    # Main
     main(args.text)
